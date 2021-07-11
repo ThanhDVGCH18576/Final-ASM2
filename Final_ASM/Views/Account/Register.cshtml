@@ -1,0 +1,43 @@
+﻿@model Final_ASM.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<img src="https://www.eips.ca/uploads/15490364431100w_registernow11.png" style="width:200" height="100"; />
+<body style="background: #F0F8FF; border: 3px solid #f1f1f1; width: 500px;  margin-left: 150px; margin-top:0px;">
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+
+        @Html.AntiForgeryToken()
+        <h4>Create a new account for FPT.</h4>
+        <hr />
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" style="background-color: #00FF00; color: white; padding: 14px 20px; margin: 8px 0; border: none; cursor: pointer; width: 100%; " value="Register" />
+            </div>
+        </div>
+    }
+    </body>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
